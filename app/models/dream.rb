@@ -10,4 +10,5 @@
 #  updated_at :datetime         not null
 #
 class Dream < ApplicationRecord
+  validates :title, :body, presence: true
 end
