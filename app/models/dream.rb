@@ -11,4 +11,7 @@
 #
 class Dream < ApplicationRecord
   validates :title, :body, presence: true
+
+  # Get all the dreams today
+  scope :today, -> { where("DATE(created_at) = ?", Date.current) }
 end
