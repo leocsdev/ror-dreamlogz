@@ -1,3 +1,17 @@
-<div class="container">
-  <h1 class="display-5">Log New Dream Form</h1>
+<div class="container py-5">
+  <%= form_with(model: @dream) do |f| %>
+    <%# Render error here %>
+
+    <div class="mb-3">
+      <%= f.label "What was your dream about?", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control", autofocus: true %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label "Please write as much as you can about your dream", class: "form-label" %>
+      <%= f.text_area :body, rows: 8, class: "form-control" %>
+    </div>
+
+    <%= f.submit "log dream", class: "btn btn-primary" %>
+  <% end %>
 </div>
