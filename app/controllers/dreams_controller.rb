@@ -1,6 +1,6 @@
 class DreamsController < ApplicationController
   def index
-    
+    @dreams = Dream.today
   end
 
   def new

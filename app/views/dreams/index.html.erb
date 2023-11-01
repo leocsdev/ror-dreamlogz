@@ -1,5 +1,14 @@
 <section class="container">
-  <h1 class="display-3">Dreams</h1>
+  <% if @dreams.present? %>
+    <h1 class="mb-5">Your dreams today</h1>
+    <ul class="list-group mb-5">
+      <% @dreams.each do |d| %>
+        <li class="list-group-item"><%= d.title %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h1 class="text-gray mb-5">No dreams logged for today</h1>
+  <% end %>
 
   <%= link_to "Log Dream", new_dream_path, class: "btn btn-primary" %>
 </section>
