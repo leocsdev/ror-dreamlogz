@@ -1,5 +1,5 @@
 <%= form_with(model: dream) do |f| %>
-  <%# Render error here %>
+  <%= render "shared/errors" %>
 
   <div class="mb-3">
     <%= f.label "What was your dream about?", class: "form-label" %>
