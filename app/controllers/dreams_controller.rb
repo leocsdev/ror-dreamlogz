@@ -34,7 +34,10 @@ class DreamsController < ApplicationController
   def destroy
     @dream.destroy
 
-    redirect_to dreams_path, success: "Your dream has been deleted."
+    respond_to do |format|
+      format.html { redirect_to dreams_path, success: "Your dream has been deleted." }
+      format.turbo_stream
+    end
   end
 
   private
