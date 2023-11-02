@@ -17,6 +17,11 @@ class DreamsController < ApplicationController
     end
   end
 
+  def show
+    @dream = Dream.find(params[:id])
+  end
+  
+
   private
 
   def dream_params
