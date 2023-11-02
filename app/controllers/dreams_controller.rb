@@ -21,6 +21,19 @@ class DreamsController < ApplicationController
     @dream = Dream.find(params[:id])
   end
   
+  def edit
+    @dream = Dream.find(params[:id])
+  end
+
+  def update
+    @dream = Dream.find(params[:id])
+
+    if @dream.update(dream_params)
+      redirect_to @dream, success: "Your dream has been updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   private
 
