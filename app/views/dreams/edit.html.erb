@@ -1,3 +1,5 @@
-<div class="container py-5">
-  <%= render "form", dream: @dream %>
-</div>
+<%= turbo_frame_tag @dream do %>
+  <div class="container py-5">
+    <%= render "form", dream: @dream %>
+  </div>
+<% end %>
