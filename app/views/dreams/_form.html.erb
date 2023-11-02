@@ -1,5 +1,5 @@
 <%= form_with(model: dream) do |f| %>
-  <%# Render error here %>
+  <%= render "shared/errors", object: dream %>
 
   <div class="mb-3">
     <%= f.label "What was your dream about?", class: "form-label" %>
@@ -16,7 +16,6 @@
       <%= f.submit "Log Dream", class: "btn btn-primary" %>
     <% else %>
       <%= f.submit "Update Dream",
-                   data: {turbo_frame: "_top" },
                    class: "btn btn-primary" %>
     <% end %>
 

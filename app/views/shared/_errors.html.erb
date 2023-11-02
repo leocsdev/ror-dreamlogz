@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+  <section class="errors">
+    <%# <h3> %>
+      <%#= pluralize(object.errors.size, "error") %>
+    <%# </h3> %>
+
+    <%= object.errors.full_messages.to_sentence.capitalize %>
+
+    </ul>
+  </section>
+<% end %>
