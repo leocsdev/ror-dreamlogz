@@ -35,6 +35,13 @@ class DreamsController < ApplicationController
     end
   end
 
+  def destroy
+    @dream = Dream.find(params[:id])
+    @dream.destroy
+
+    redirect_to dreams_path, success: "Your dream has been deleted."
+  end
+
   private
 
   def dream_params

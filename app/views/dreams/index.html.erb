@@ -10,7 +10,11 @@
 
           <div class="actions d-flex gap-4 justify-content-between align-items-center">
             <div>
-              Delete
+              <%= button_to "Delete",
+                             d,
+                             method: :delete,
+                             data: { turbo_confirm: "Are you sure?" },
+                             class: "btn btn-secondary btn-sm" %>
             </div>
 
             <div>
