@@ -1,4 +1,13 @@
 <section class="container">
+
+  <% if @days.present? %>
+    <ul class="d-flex gap-4 flex-wrap">
+      <% @days.each do |day| %>
+        <li class="btn btn-secondary"><%= day %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <% if @dreams.present? %>
     <h1 class="mb-5">Your dreams today</h1>
 
