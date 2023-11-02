@@ -1,5 +1,6 @@
 class DreamsController < ApplicationController
   before_action :set_dream, only: %i[show edit update destroy]
+  before_action :get_days_of_current_month, only: :index
 
   def index
     @dreams = Dream.today
@@ -51,5 +52,13 @@ class DreamsController < ApplicationController
 
   def dream_params
     params.require(:dream).permit(:title, :body)
+  end
+
+  def get_days_of_current_month
+    @days = []
+
+    (Date.current.beginning_of_month..Date.current.end_of_month).each do |date|
+      @days << date.strftime("%d")
+    end
   end
 end
