@@ -15,7 +15,9 @@
     <% if dream.new_record? %>
       <%= f.submit "Log Dream", class: "btn btn-primary" %>
     <% else %>
-      <%= f.submit "Update Dream", class: "btn btn-primary" %>
+      <%= f.submit "Update Dream",
+                   data: {turbo_frame: "_top" },
+                   class: "btn btn-primary" %>
     <% end %>
 
     <%= link_to "Back", dreams_path, class: "btn btn-success" %>
