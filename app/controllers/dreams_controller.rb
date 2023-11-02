@@ -13,7 +13,10 @@ class DreamsController < ApplicationController
     @dream = Dream.new(dream_params)
 
     if @dream.save
-      redirect_to dreams_path, success: "Your dream has been saved."
+      respond_to do |format|
+        format.html { redirect_to dreams_path, success: "Your dream has been saved." }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
