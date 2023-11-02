@@ -28,7 +28,7 @@ class DreamsController < ApplicationController
 
   def update
     if @dream.update(dream_params)
-      redirect_to @dream, success: "Your dream has been updated."
+      redirect_to dreams_path, success: "Your dream has been updated."
     else
       render :edit, status: :unprocessable_entity
     end
