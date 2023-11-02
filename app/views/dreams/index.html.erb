@@ -3,11 +3,21 @@
     <h1 class="mb-5">Your dreams today</h1>
     <ul class="list-group mb-5">
       <% @dreams.each do |d| %>
-        <%= link_to d do %>
-          <li class="list-group-item">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= link_to d do %>
             <%= d.title %>
-          </li>
-        <% end %>
+          <% end %>
+
+          <div class="actions d-flex gap-4 justify-content-between align-items-center">
+            <div>
+              Delete
+            </div>
+
+            <div>
+              <%= link_to "Edit", edit_dream_path(d) %>
+            </div>
+          </div>
+        </li>
       <% end %>
     </ul>
   <% else %>
