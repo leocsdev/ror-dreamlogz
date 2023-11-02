@@ -3,7 +3,11 @@
     <h1 class="mb-5">Your dreams today</h1>
     <ul class="list-group mb-5">
       <% @dreams.each do |d| %>
-        <li class="list-group-item"><%= d.title %></li>
+        <%= link_to d do %>
+          <li class="list-group-item">
+            <%= d.title %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   <% else %>
