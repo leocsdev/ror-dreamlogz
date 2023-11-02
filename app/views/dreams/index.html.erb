@@ -1,30 +1,9 @@
 <section class="container">
   <% if @dreams.present? %>
     <h1 class="mb-5">Your dreams today</h1>
+
     <ul class="list-group mb-5">
-      <% @dreams.each do |d| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= link_to d do %>
-            <%= d.title %>
-          <% end %>
-
-          <div class="actions d-flex gap-2 justify-content-between align-items-center">
-            <div>
-              <%= button_to "Delete",
-                             d,
-                             method: :delete,
-                             data: { turbo_confirm: "Are you sure?" },
-                             class: "btn btn-danger btn-sm" %>
-            </div>
-
-            <div>
-              <%= link_to "Edit",
-                          edit_dream_path(d),
-                          class: "btn btn-success btn-sm" %>
-            </div>
-          </div>
-        </li>
-      <% end %>
+      <%= render @dreams %>
     </ul>
   <% else %>
     <h1 class="text-gray mb-5">No dreams logged for today</h1>

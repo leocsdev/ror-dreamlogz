@@ -1,4 +1,6 @@
 class DreamsController < ApplicationController
+  before_action :set_dream, only: %i[show edit update destroy]
+
   def index
     @dreams = Dream.today
   end
@@ -17,17 +19,11 @@ class DreamsController < ApplicationController
     end
   end
 
-  def show
-    @dream = Dream.find(params[:id])
-  end
+  def show; end
   
-  def edit
-    @dream = Dream.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @dream = Dream.find(params[:id])
-
     if @dream.update(dream_params)
       redirect_to @dream, success: "Your dream has been updated."
     else
@@ -36,13 +32,16 @@ class DreamsController < ApplicationController
   end
 
   def destroy
-    @dream = Dream.find(params[:id])
     @dream.destroy
 
     redirect_to dreams_path, success: "Your dream has been deleted."
   end
 
   private
+
+  def set_dream
+    @dream = Dream.find(params[:id])
+  end
 
   def dream_params
     params.require(:dream).permit(:title, :body)
