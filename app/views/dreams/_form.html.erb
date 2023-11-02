@@ -11,5 +11,9 @@
     <%= f.text_area :body, rows: 8, class: "form-control" %>
   </div>
 
-  <%= f.submit "log dream", class: "btn btn-primary" %>
+  <% if dream.new_record? %>
+    <%= f.submit "Log Dream", class: "btn btn-primary" %>
+  <% else %>
+    <%= f.submit "Update Dream", class: "btn btn-primary" %>
+  <% end %>
 <% end %>
