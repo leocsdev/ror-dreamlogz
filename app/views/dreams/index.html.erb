@@ -3,7 +3,7 @@
   <% if @days.present? %>
     <ul class="d-flex gap-4 flex-wrap">
       <% @days.each do |day| %>
-        <li class="btn btn-secondary"><%= day %></li>
+        <li class="btn btn-<%= @current_day == day ? "success" : "secondary" %>"><%= day %></li>
       <% end %>
     </ul>
   <% end %>

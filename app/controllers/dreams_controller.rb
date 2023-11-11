@@ -57,6 +57,8 @@ class DreamsController < ApplicationController
   def get_days_of_current_month
     @days = []
 
+    @current_day = Date.current.strftime("%d")
+
     (Date.current.beginning_of_month..Date.current.end_of_month).each do |date|
       @days << date.strftime("%d")
     end
