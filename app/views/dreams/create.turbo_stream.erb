@@ -1,2 +1,3 @@
+<%= turbo_stream.update "heading", "Your dreams today" if Dream.today.present? %>
 <%= turbo_stream.prepend "dreams", @dream %>
 <%= turbo_stream.update Dream.new, "" %>

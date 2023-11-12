@@ -1,15 +1,11 @@
 <section class="container">
-  <% if @dreams.present? %>
-    <h1 class="mb-5">Your dreams today</h1>
+  <h1 class="mb-5" id="heading"><%= Dream.today.empty? ? "No dreams logged for today" : "Your dreams today" %></h1>
 
-    <ul class="list-group mb-5">
-      <%= turbo_frame_tag "dreams" do %>
-        <%= render @dreams %>
-      <% end %>
-    </ul>
-  <% else %>
-    <h1 class="text-gray mb-5">No dreams logged for today</h1>
-  <% end %>
+  <ul class="list-group mb-5">
+    <%= turbo_frame_tag "dreams" do %>
+      <%= render @dreams %>
+    <% end %>
+  </ul>
 
   <%= link_to "Log Dream",
               new_dream_path,
