@@ -1,1 +1,2 @@
+<%= turbo_stream.update "heading", "No dreams logged for today" if Dream.today.empty? %>
 <%= turbo_stream.remove @dream %>
