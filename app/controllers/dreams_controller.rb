@@ -1,6 +1,6 @@
 class DreamsController < ApplicationController
   before_action :set_dream, only: %i[show edit update destroy]
-  before_action :get_days_of_current_month, only: :index
+  before_action :get_week_date_range, only: :index
 
   def index
     @dreams = Dream.today
@@ -54,12 +54,13 @@ class DreamsController < ApplicationController
     params.require(:dream).permit(:title, :body)
   end
 
-  def get_days_of_current_month
+  def get_week_date_range
     @days = []
-
     @current_day = Date.current.strftime("%d")
 
-    (Date.current.beginning_of_month..Date.current.end_of_month).each do |date|
+    # Get the last 3 days and the next 3 days of the current date
+    # e.g. if today is the 4th, get the 1st to 7th date range
+    (Date.current.days_ago(3)..Date.current.days_since(3)).each do |date|
       @days << date.strftime("%d")
     end
   end
