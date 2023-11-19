@@ -10,7 +10,7 @@
     </div>
   <% end %>
 
-  <h1 class="mb-5" id="heading"><%= Dream.today.empty? ? "No dreams logged for today" : "Your dreams today" %></h1>
+  <h1 class="mb-5 text-center" id="heading"><%= Dream.today.empty? ? "No dreams logged for today" : "Your dreams today" %></h1>
 
   <ul class="list-group mb-5">
     <%= turbo_frame_tag "dreams" do %>
@@ -18,10 +18,12 @@
     <% end %>
   </ul>
 
-  <%= link_to "Log Dream",
-              new_dream_path,
-              data: { turbo_frame: dom_id(Dream.new) },
-              class: "btn btn-primary" %>
+  <div class="text-center">
+    <%= link_to "Log Dream",
+                new_dream_path,
+                data: { turbo_frame: dom_id(Dream.new) },
+                class: "btn btn-primary" %>
+  </div>
 
   <%= turbo_frame_tag Dream.new %>
 </section>
