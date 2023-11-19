@@ -55,13 +55,13 @@ class DreamsController < ApplicationController
   end
 
   def get_week_date_range
-    @days = []
-    @current_day = Date.current.strftime("%d")
+    @dates = []
+    @current_date = Date.current
 
     # Get the last 3 days and the next 3 days of the current date
     # e.g. if today is the 4th, get the 1st to 7th date range
     (Date.current.days_ago(3)..Date.current.days_since(3)).each do |date|
-      @days << date.strftime("%d")
+      @dates << date
     end
   end
 end

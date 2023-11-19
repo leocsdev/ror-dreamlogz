@@ -1,10 +1,13 @@
 <section class="container">
-  <% if @days.present? %>
-    <ul class="d-flex gap-4 flex-wrap">
-      <% @days.each do |day| %>
-        <li class="btn btn-<%= @current_day == day ? "success" : "secondary" %>"><%= day %></li>
-      <% end %>
-    </ul>
+  <% if @dates.present? %>
+    <div class="text-center">
+      <h3><%= @current_date.strftime("%B").upcase %></h3>
+      <ul class="d-flex gap-4 flex-wrap justify-content-center">
+        <% @dates.each do |date| %>
+          <li class="btn btn-<%= @current_date == date ? "success" : "secondary" %>"><%= date.strftime("%d") %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
   <h1 class="mb-5" id="heading"><%= Dream.today.empty? ? "No dreams logged for today" : "Your dreams today" %></h1>
