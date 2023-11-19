@@ -1,7 +1,7 @@
 <section class="container">
   <% if @dates.present? %>
     <div class="text-center">
-      <h3><%= @current_date.strftime("%B").upcase %></h3>
+      <h3><%= @current_date.strftime("%B %Y").upcase %></h3>
       <ul class="d-flex gap-4 flex-wrap justify-content-center">
         <% @dates.each do |date| %>
           <li class="btn btn-<%= @current_date == date ? "success" : "secondary" %>"><%= date.strftime("%d") %></li>
