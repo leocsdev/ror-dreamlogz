@@ -1,11 +1,11 @@
 <section class="container">
   <% if @dates.present? %>
     <div class="text-center">
-      <h3><%= @current_date.strftime("%B %Y").upcase %></h3>
+      <h3><%= @selected_date.strftime("%B %Y").upcase %></h3>
 
       <div class="d-flex gap-4 justify-content-center mb-5">
         <% @dates.each do |date| %>
-          <%= link_to date.strftime("%d"), dreams_path(date:), class: "btn btn-#{@current_date == date ? 'success' : 'secondary'}" %>
+          <%= link_to date.strftime("%d"), dreams_path(date:), class: "btn btn-#{@selected_date == date ? 'success' : 'secondary'}" %>
         <% end %>
       </div>
     </div>
