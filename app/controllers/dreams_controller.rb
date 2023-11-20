@@ -10,7 +10,6 @@ class DreamsController < ApplicationController
 
     return @dreams = Dream.today if date.nil?
 
-    Date.parse(params[:date])
     # Query all dreams only from the date selected
     @dreams = Dream.where(created_at: date.beginning_of_day..date.end_of_day)
   end
@@ -79,8 +78,13 @@ class DreamsController < ApplicationController
   end
 
   def parse_date(date)
-    Date.parse(date)
+    parsed_date = Date.parse(date)
+    # if parsed_date is in the future, return current date
+    return Date.current if parsed_date > Date.current
+
+    parsed_date
   rescue StandardError
+    # if date is invalid, return nil
     nil
   end
 end
