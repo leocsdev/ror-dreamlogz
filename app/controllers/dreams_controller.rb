@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DreamsController < ApplicationController
   before_action :set_dream, only: %i[show edit update destroy]
   before_action :get_week_date_range, only: :index
