@@ -5,10 +5,12 @@ class DreamsController < ApplicationController
   before_action :generate_week_date_range, only: :index
 
   def index
-    return @dreams = Dream.today if params[:date].nil?
-
     # Parse date from params
-    date = Date.parse(params[:date])
+    date = parse_date(params[:date])
+
+    return @dreams = Dream.today if date.nil?
+
+    Date.parse(params[:date])
     # Query all dreams only from the date selected
     @dreams = Dream.where(created_at: date.beginning_of_day..date.end_of_day)
   end
@@ -62,9 +64,10 @@ class DreamsController < ApplicationController
   end
 
   def generate_week_date_range
-    @dates = []
     # Parse date from params
-    selected_date = Date.parse(params[:date]) if params[:date].present?
+    selected_date = parse_date(params[:date])
+    @dates = []
+
     # If date is nil, set the current date
     @selected_date = selected_date || Date.current
 
@@ -73,5 +76,11 @@ class DreamsController < ApplicationController
     (@selected_date.days_ago(3)..@selected_date.days_since(3)).each do |date|
       @dates << date
     end
+  end
+
+  def parse_date(date)
+    Date.parse(date)
+  rescue StandardError
+    nil
   end
 end
