@@ -5,7 +5,7 @@
 
       <div class="d-flex gap-4 justify-content-center mb-5">
         <% @dates.each do |date| %>
-          <%= button_to date.strftime("%d"), params: {date: @current_date}, class: "btn btn-#{@current_date == date ? 'success' : 'secondary'}" %>
+          <%= link_to date.strftime("%d"), dreams_path(date:), class: "btn btn-#{@current_date == date ? 'success' : 'secondary'}" %>
         <% end %>
       </div>
     </div>
