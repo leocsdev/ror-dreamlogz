@@ -2,15 +2,16 @@
   <% if @dates.present? %>
     <div class="text-center">
       <h3><%= @current_date.strftime("%B %Y").upcase %></h3>
-      <ul class="d-flex gap-4 flex-wrap justify-content-center">
+
+      <div class="d-flex gap-4 justify-content-center mb-5">
         <% @dates.each do |date| %>
-          <li class="btn btn-<%= @current_date == date ? "success" : "secondary" %>"><%= date.strftime("%d") %></li>
+          <%= link_to date.strftime("%d"), dreams_path(date:), class: "btn btn-#{@current_date == date ? 'success' : 'secondary'}" %>
         <% end %>
-      </ul>
+      </div>
     </div>
   <% end %>
 
-  <h1 class="mb-5 text-center" id="heading"><%= Dream.today.empty? ? "No dreams logged for today" : "Your dreams today" %></h1>
+  <h1 class="mb-4 text-center" id="heading"><%= Dream.today.empty? ? "No dreams logged for today" : "Your dreams today" %></h1>
 
   <ul class="list-group mb-5">
     <%= turbo_frame_tag "dreams" do %>
