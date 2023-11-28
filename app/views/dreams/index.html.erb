@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <h1 class="mb-4 text-center" id="heading"><%= Dream.today.empty? ? "No dreams logged for today" : "Your dreams today" %></h1>
+  <h1 class="mb-4 text-center" id="heading"><%= @dreams.empty? ? "No dreams logged for today" : "Your dreams today" %></h1>
 
   <ul class="list-group mb-5">
     <%= turbo_frame_tag "dreams" do %>
