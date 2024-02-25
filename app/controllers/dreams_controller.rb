@@ -9,7 +9,7 @@ class DreamsController < ApplicationController
     return @dreams = Dream.today if @dream_date.nil?
 
     # Query all dreams only from the date selected
-    @dreams = Dream.where(created_at: @dream_date.beginning_of_day..@dream_date.end_of_day)
+    @dreams = Dream.where(dream_date: @dream_date.beginning_of_day..@dream_date.end_of_day)
   end
 
   def new
