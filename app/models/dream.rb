@@ -6,6 +6,7 @@
 #
 #  id         :bigint           not null, primary key
 #  body       :text             not null
+#  dream_date :datetime         not null
 #  slug       :string
 #  title      :string           not null
 #  created_at :datetime         not null
