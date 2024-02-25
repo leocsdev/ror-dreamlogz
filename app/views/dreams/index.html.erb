@@ -21,7 +21,7 @@
 
   <div class="text-center">
     <%= link_to "Log Dream",
-                new_dream_path,
+                new_dream_path(date: @dream_date),
                 data: { turbo_frame: dom_id(Dream.new) },
                 class: "btn btn-primary" %>
   </div>
