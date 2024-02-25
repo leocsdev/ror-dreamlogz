@@ -3,8 +3,13 @@
 
   <div class="mb-3">
     <%= f.label "Date", class: "form-label" %>
-    <%= f.text_field :dream_date, class: "form-control", value: @dream_date.strftime("%Y-%m-%d"), disabled: true %>
-    <%= f.hidden_field :dream_date, value: @dream_date %>
+    <% if dream.new_record? %>
+      <%= f.text_field :dream_date, class: "form-control", value: @dream_date.strftime("%Y-%m-%d"), disabled: true %>
+      <%= f.hidden_field :dream_date, value: @dream_date %>
+    <% else %>
+      <%= f.text_field :dream_date, class: "form-control", value: dream.dream_date.strftime("%Y-%m-%d"), disabled: true %>
+      <%= f.hidden_field :dream_date, value: dream.dream_date %>
+    <% end %>
   </div>
 
   <div class="mb-3">
