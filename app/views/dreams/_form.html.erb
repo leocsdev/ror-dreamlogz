@@ -2,6 +2,12 @@
   <%= render "shared/errors", object: dream %>
 
   <div class="mb-3">
+    <%= f.label "Date", class: "form-label" %>
+    <%= f.text_field :dream_date, class: "form-control", value: @dream_date.strftime("%Y-%m-%d"), disabled: true %>
+    <%= f.hidden_field :dream_date, value: @dream_date %>
+  </div>
+
+  <div class="mb-3">
     <%= f.label "What was your dream about?", class: "form-label" %>
     <%= f.text_field :title, class: "form-control", autofocus: true %>
   </div>

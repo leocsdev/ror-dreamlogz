@@ -2,16 +2,14 @@
 
 class DreamsController < ApplicationController
   before_action :set_dream, only: %i[show edit update destroy]
+  before_action :set_dream_date, only: %i[index new create]
   before_action :generate_week_date_range, only: :index
 
   def index
-    # Parse date from params
-    date = parse_date(params[:date])
-
-    return @dreams = Dream.today if date.nil?
+    return @dreams = Dream.today if @dream_date.nil?
 
     # Query all dreams only from the date selected
-    @dreams = Dream.where(created_at: date.beginning_of_day..date.end_of_day)
+    @dreams = Dream.where(created_at: @dream_date.beginning_of_day..@dream_date.end_of_day)
   end
 
   def new
@@ -58,8 +56,21 @@ class DreamsController < ApplicationController
     @dream = Dream.find(params[:id])
   end
 
+  def set_dream_date
+    return @dream_date = DateTime.current if params[:date].nil?
+
+    current_date_time = DateTime.current
+    parsed_date = parse_date(params[:date])
+
+    @dream_date = current_date_time.change(
+      year: parsed_date.year,
+      month: parsed_date.month,
+      day: parsed_date.day
+    )
+  end
+
   def dream_params
-    params.require(:dream).permit(:title, :body)
+    params.require(:dream).permit(:dream_date, :title, :body)
   end
 
   def generate_week_date_range
